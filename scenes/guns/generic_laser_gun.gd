@@ -8,10 +8,13 @@ var cooldown: bool = false
 
 func shoot_down() -> void:
 	if !cooldown:
-		var inst = bullet.instantiate()
+		var inst = bullet.instantiate() as Bullet
+		inst.affects_player = false
+		inst.affects_enemies = true
 		GameManager.spawn_bullet(inst)
 		inst.z_index = self.z_index - 1
 		inst.global_position = shoot_point.global_position
+		inst.modulate = Color.RED
 		cooldown_timer.start()
 		cooldown = true
 

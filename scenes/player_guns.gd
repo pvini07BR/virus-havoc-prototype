@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("shoot"):
 		if get_child(current_gun_index).has_method("shoot_press"):
-			get_child(current_gun_index).shoot_press()
+			get_child(current_gun_index).shoot_presss()
 	
 	if Input.is_action_just_released("shoot"):
 		if get_child(current_gun_index).has_method("shoot_release"):

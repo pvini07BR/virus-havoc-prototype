@@ -1,17 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cspsefqtht4q2"]
+[gd_scene load_steps=7 format=3 uid="uid://cspsefqtht4q2"]
 
 [ext_resource type="Script" uid="uid://dastu71n0pd4f" path="res://scenes/player.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://dxue1tqv1tvm1" path="res://assets/sprites/player.png" id="2_3li8b"]
 [ext_resource type="Script" uid="uid://ksfufcd5st5f" path="res://scenes/player_guns.gd" id="2_mdl7e"]
+[ext_resource type="PackedScene" uid="uid://t4nf3kbnefro" path="res://scenes/components/Hitbox.tscn" id="4_mdl7e"]
+[ext_resource type="Script" uid="uid://bvhufuu6pxphs" path="res://scenes/components/health.gd" id="5_qu4a1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v6fml"]
 radius = 19.105
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3li8b"]
-radius = 19.0
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v6fml")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("5_qu4a1")
+max_health = 10.0
+metadata/_custom_type_script = "uid://bvhufuu6pxphs"
 
 [node name="Guns" type="Node2D" parent="."]
 position = Vector2(3, 15)
@@ -25,11 +29,11 @@ offset = Vector2(0, -9)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_v6fml")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_mdl7e")]
+collision_layer = 1
+collision_mask = 1
+health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 rotation = 1.5708
-shape = SubResource("CircleShape2D_3li8b")
-debug_color = Color(0.7, 0, 0, 0.419608)
-
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+shape = SubResource("CircleShape2D_v6fml")

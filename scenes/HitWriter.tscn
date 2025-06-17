@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dohhjahl4nl6e"]
-
-[ext_resource type="Script" uid="uid://rjqg6hvr6pib" path="res://scenes/hit_writer.gd" id="1_2u17e"]
-
-[node name="HitWriter" type="Area2D"]
-script = ExtResource("1_2u17e")
