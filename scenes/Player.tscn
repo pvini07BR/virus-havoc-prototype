@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cspsefqtht4q2"]
+
+[ext_resource type="Script" uid="uid://dastu71n0pd4f" path="res://scenes/player.gd" id="1_v6fml"]
+[ext_resource type="Texture2D" uid="uid://dxue1tqv1tvm1" path="res://assets/sprites/player.png" id="2_3li8b"]
+[ext_resource type="Script" uid="uid://ksfufcd5st5f" path="res://scenes/player_guns.gd" id="2_mdl7e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v6fml"]
+radius = 19.105
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3li8b"]
+radius = 19.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_v6fml")
+
+[node name="Guns" type="Node2D" parent="."]
+position = Vector2(3, 15)
+script = ExtResource("2_mdl7e")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_3li8b")
+offset = Vector2(0, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_v6fml")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_3li8b")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

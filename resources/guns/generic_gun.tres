@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GunInfo" load_steps=3 format=3 uid="uid://dopt5tg6ihxi8"]
+
+[ext_resource type="Script" uid="uid://b8vpmcgkneqn0" path="res://scripts/gun_info.gd" id="1_6g2g5"]
+[ext_resource type="PackedScene" uid="uid://38kharycq82j" path="res://scenes/guns/generic_laser_gun.tscn" id="1_srciy"]
+
+[resource]
+script = ExtResource("1_6g2g5")
+scene = ExtResource("1_srciy")
+name = "Generic Gun"
+description = ""
+metadata/_custom_type_script = "uid://b8vpmcgkneqn0"

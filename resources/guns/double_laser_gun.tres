@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GunInfo" load_steps=3 format=3 uid="uid://b2tp4jl4nbin3"]
+
+[ext_resource type="PackedScene" uid="uid://wk3o8afb3rrg" path="res://scenes/guns/double_laser_gun.tscn" id="1_52tck"]
+[ext_resource type="Script" uid="uid://b8vpmcgkneqn0" path="res://scripts/gun_info.gd" id="2_lygox"]
+
+[resource]
+script = ExtResource("2_lygox")
+scene = ExtResource("1_52tck")
+name = "Double Laser Gun"
+description = ""
+metadata/_custom_type_script = "uid://b8vpmcgkneqn0"

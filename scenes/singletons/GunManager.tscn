@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlsh6i43jfxeu"]
+
+[ext_resource type="Script" uid="uid://bfwmpn66ov3lk" path="res://scenes/singletons/gun_manager.gd" id="1_hcvfa"]
+[ext_resource type="Script" uid="uid://b8vpmcgkneqn0" path="res://scripts/gun_info.gd" id="2_svh0y"]
+[ext_resource type="Resource" uid="uid://dopt5tg6ihxi8" path="res://resources/guns/generic_gun.tres" id="3_3eafi"]
+[ext_resource type="Resource" uid="uid://b2tp4jl4nbin3" path="res://resources/guns/double_laser_gun.tres" id="4_o812d"]
+
+[node name="GunManager" type="Node"]
+script = ExtResource("1_hcvfa")
+guns = Array[ExtResource("2_svh0y")]([ExtResource("3_3eafi"), ExtResource("4_o812d")])
+equipped_guns = Array[int]([1, 2])
