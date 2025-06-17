@@ -6,16 +6,16 @@ class_name Health
 @export var invincible: bool = false
 @onready var health: float = max_health
 
-signal on_damage
+signal on_damage(amount: float, new_hp: float)
 signal on_death
 
 func damage(amount: float):
 	if invincible: return
 	
 	health -= amount
+	on_damage.emit(amount, health)
 	
 	if health <= 0.0:
 		on_death.emit()
 		get_parent().queue_free()
-	else:
-		on_damage.emit()
+		

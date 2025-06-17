@@ -9,3 +9,6 @@ func _process(delta: float) -> void:
 	velocity = lerp(velocity, input_axis * 400, 15 * delta)
 	
 	move_and_slide()
+
+func get_health_component() -> Health:
+	return get_node_or_null("Health")

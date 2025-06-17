@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://mpxn7i30oqn3"]
+[gd_scene load_steps=8 format=3 uid="uid://mpxn7i30oqn3"]
 
 [ext_resource type="PackedScene" uid="uid://cspsefqtht4q2" path="res://scenes/Player.tscn" id="1_ibkli"]
 [ext_resource type="Script" uid="uid://dvdt7cbabvjnj" path="res://scenes/game.gd" id="1_qbsmt"]
+[ext_resource type="Script" uid="uid://cfc6qaeqg0kfe" path="res://scenes/game_ui.gd" id="3_cpr0p"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qbsmt"]
 normal = Vector2(0, 1)
@@ -37,3 +38,10 @@ shape = SubResource("WorldBoundaryShape2D_cpr0p")
 
 [node name="Right" type="CollisionShape2D" parent="Bounds"]
 shape = SubResource("WorldBoundaryShape2D_78awf")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("3_cpr0p")
+
+[node name="HP" type="ProgressBar" parent="UI"]
+offset_right = 415.0
+offset_bottom = 27.0
