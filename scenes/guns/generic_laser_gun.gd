@@ -12,6 +12,7 @@ func shoot_down() -> void:
 		inst.affects_player = false
 		inst.affects_enemies = true
 		GameManager.spawn_bullet(inst)
+		inst.velocity.x = 1000
 		inst.z_index = self.z_index - 1
 		inst.global_position = shoot_point.global_position
 		inst.modulate = Color.RED

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnpxwoen2wgnn"
-path="res://.godot/imported/diagonal_laser_gun.png-241e14b580adebe1696a44b96307bd35.ctex"
+uid="uid://qe6hkak3d8a1"
+path="res://.godot/imported/virus_doubleDiagonalLaser.png-dd7b906fd1fc1eb01bb2e9f8eb1d3279.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/diagonal_laser_gun.png"
-dest_files=["res://.godot/imported/diagonal_laser_gun.png-241e14b580adebe1696a44b96307bd35.ctex"]
+source_file="res://assets/sprites/viruses/virus_doubleDiagonalLaser.png"
+dest_files=["res://.godot/imported/virus_doubleDiagonalLaser.png-dd7b906fd1fc1eb01bb2e9f8eb1d3279.ctex"]
 
 [params]
 

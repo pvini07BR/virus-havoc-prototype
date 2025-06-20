@@ -8,3 +8,9 @@ func _ready() -> void:
 func spawn_bullet(bullet: Bullet):
 	if current_scene is Game:
 		current_scene.spawn_bullet(bullet)
+		
+func get_player():
+	if current_scene is Game:
+		return current_scene.get_node_or_null("Player")
+	else:
+		return null

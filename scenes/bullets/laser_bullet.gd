@@ -1,7 +1,7 @@
 extends Bullet
 
 func _process(_delta: float) -> void:
-	velocity.x = 1000
+	self.rotation = self.velocity.angle()
 	move_and_slide()
 	
 	despawn_itself()

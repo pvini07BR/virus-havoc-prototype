@@ -1,6 +1,6 @@
 extends Area2D
 
-class_name HitWriter
+class_name HitSender
 
 @export var damage: float = 1.0
 

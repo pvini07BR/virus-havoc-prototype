@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5lvk5b11absr"]
 
 [ext_resource type="Script" uid="uid://dshre4f72xq23" path="res://scenes/bullets/laser_bullet.gd" id="1_nj2iv"]
-[ext_resource type="PackedScene" uid="uid://dohhjahl4nl6e" path="res://scenes/components/HitWriter.tscn" id="2_nnty6"]
+[ext_resource type="PackedScene" uid="uid://dohhjahl4nl6e" path="res://scenes/components/HitSender.tscn" id="2_nnty6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nnty6"]
 height = 4.0
@@ -10,9 +10,10 @@ height = 4.0
 radius = 2.0
 height = 16.0
 
-[node name="LaserBullet" type="CharacterBody2D" node_paths=PackedStringArray("hit_writer")]
+[node name="LaserBullet" type="CharacterBody2D" node_paths=PackedStringArray("hit_sender")]
+motion_mode = 1
 script = ExtResource("1_nj2iv")
-hit_writer = NodePath("HitWriter")
+hit_sender = NodePath("HitSender")
 
 [node name="Visual" type="Node2D" parent="."]
 
@@ -22,11 +23,13 @@ rotation = 1.5708
 scale = Vector2(4.00454, 4)
 mesh = SubResource("CapsuleMesh_nnty6")
 
-[node name="HitWriter" parent="." instance=ExtResource("2_nnty6")]
+[node name="HitSender" parent="." instance=ExtResource("2_nnty6")]
+collision_layer = 0
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitWriter"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
 position = Vector2(-6, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_nnty6")
 
-[connection signal="area_entered" from="HitWriter" to="." method="_on_hit_writer_area_entered"]
+[connection signal="area_entered" from="HitSender" to="." method="_on_hit_writer_area_entered"]

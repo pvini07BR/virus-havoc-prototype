@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkxcrpbmi4let"
-path="res://.godot/imported/generic_laser_gun.png-0e1e8733ada0cdb3ef7bccd5171ac0d9.ctex"
+uid="uid://bobs1kruc5als"
+path="res://.godot/imported/shootingFolderTab2.png-b317d01e003dc43448c17dd672f38d6e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/generic_laser_gun.png"
-dest_files=["res://.godot/imported/generic_laser_gun.png-0e1e8733ada0cdb3ef7bccd5171ac0d9.ctex"]
+source_file="res://assets/sprites/viruses/shootingFolderTab2.png"
+dest_files=["res://.godot/imported/shootingFolderTab2.png-b317d01e003dc43448c17dd672f38d6e.ctex"]
 
 [params]
 

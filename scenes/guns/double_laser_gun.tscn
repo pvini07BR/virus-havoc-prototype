@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://wk3o8afb3rrg"]
 
 [ext_resource type="Script" uid="uid://dbda24nt8dswy" path="res://scenes/guns/double_laser_gun.gd" id="1_vj088"]
-[ext_resource type="Texture2D" uid="uid://c47bmek7lj0v5" path="res://assets/sprites/double_laser_gun.png" id="2_vj088"]
+[ext_resource type="Texture2D" uid="uid://c47bmek7lj0v5" path="res://assets/sprites/guns/double_laser_gun.png" id="2_vj088"]
 
 [node name="DoubleLaserGun" type="Node2D"]
 script = ExtResource("1_vj088")

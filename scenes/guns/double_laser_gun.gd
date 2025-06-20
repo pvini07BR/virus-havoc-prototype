@@ -13,6 +13,7 @@ func shoot_bullet(pos: Vector2):
 	inst.affects_player = false
 	inst.affects_enemies = true
 	GameManager.spawn_bullet(inst)
+	inst.velocity.x = 1000
 	inst.modulate = Color.BLUE
 	inst.z_index = self.z_index - 1
 	inst.global_position = pos

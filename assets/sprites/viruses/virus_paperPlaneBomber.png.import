@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnkk7m3wpk68x"
-path="res://.godot/imported/bomb_launcher.png-3c6647f70da2e4736af3894ccf9ce981.ctex"
+uid="uid://ck1l0s0sgr7fm"
+path="res://.godot/imported/virus_paperPlaneBomber.png-64a6ac32b3f28966b9474d53256540bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bomb_launcher.png"
-dest_files=["res://.godot/imported/bomb_launcher.png-3c6647f70da2e4736af3894ccf9ce981.ctex"]
+source_file="res://assets/sprites/viruses/virus_paperPlaneBomber.png"
+dest_files=["res://.godot/imported/virus_paperPlaneBomber.png-64a6ac32b3f28966b9474d53256540bd.ctex"]
 
 [params]
 

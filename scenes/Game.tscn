@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://mpxn7i30oqn3"]
+[gd_scene load_steps=9 format=3 uid="uid://mpxn7i30oqn3"]
 
 [ext_resource type="PackedScene" uid="uid://cspsefqtht4q2" path="res://scenes/Player.tscn" id="1_ibkli"]
 [ext_resource type="Script" uid="uid://dvdt7cbabvjnj" path="res://scenes/game.gd" id="1_qbsmt"]
 [ext_resource type="Script" uid="uid://cfc6qaeqg0kfe" path="res://scenes/game_ui.gd" id="3_cpr0p"]
+[ext_resource type="PackedScene" uid="uid://0el8c5nsyh8f" path="res://scenes/viruses/TestVirus.tscn" id="4_78awf"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qbsmt"]
 normal = Vector2(0, 1)
@@ -45,3 +46,6 @@ script = ExtResource("3_cpr0p")
 [node name="HP" type="ProgressBar" parent="UI"]
 offset_right = 415.0
 offset_bottom = 27.0
+
+[node name="TestVirus" parent="." instance=ExtResource("4_78awf")]
+position = Vector2(715, 344)
