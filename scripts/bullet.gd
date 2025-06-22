@@ -25,6 +25,6 @@ func _ready() -> void:
 		hit_sender.set_collision_mask_value(2, affects_enemies)
 
 func despawn_itself() -> void:
-	var rect = Rect2i(0, 0, GameManager.current_scene.bounds.x, GameManager.current_scene.bounds.y)
+	var rect = Rect2i(0, 0, GameManager.current_scene.stage_scene.bounds.x, GameManager.current_scene.stage_scene.bounds.y)
 	if !rect.has_point(self.position):
 		self.queue_free()

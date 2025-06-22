@@ -24,6 +24,18 @@ player = NodePath("Player")
 [node name="Player" parent="." instance=ExtResource("3_78awf")]
 position = Vector2(95, 360)
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(95, 360)
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="Bounds" type="StaticBody2D" parent="."]

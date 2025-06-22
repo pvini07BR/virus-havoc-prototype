@@ -8,4 +8,4 @@
 [node name="GunManager" type="Node"]
 script = ExtResource("1_hcvfa")
 guns = Array[ExtResource("2_svh0y")]([ExtResource("3_3eafi"), ExtResource("4_o812d")])
-equipped_guns = Array[int]([0, 0])
+equipped_guns = Array[int]([1, 0])

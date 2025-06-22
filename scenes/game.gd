@@ -3,10 +3,26 @@ extends Node2D
 class_name Game
 
 @export var player: CharacterBody2D
-@export var bounds: Vector2i = Vector2(1280, 720)
+
+var stage_scene: Stage = null
+
+@onready var camera: Camera2D = $Camera2D
+
+@onready var right_bound: WorldBoundaryShape2D = $Bounds/Right.shape
+@onready var bottom_bound: WorldBoundaryShape2D = $Bounds/Bottom.shape
 
 func _ready():
-	add_child(StageManager.stages[StageManager.stage_index].scene.instantiate())
+	stage_scene = StageManager.stages[StageManager.stage_index].scene.instantiate()
+	
+	right_bound.distance = -stage_scene.bounds.x
+	bottom_bound.distance = -stage_scene.bounds.y
+	
+	camera.limit_left = 0
+	camera.limit_top = 0
+	camera.limit_right = stage_scene.bounds.x
+	camera.limit_bottom = stage_scene.bounds.y
+	
+	add_child(stage_scene)
 
 func spawn_bullet(bullet: Bullet):
 	$Bullets.add_child(bullet)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cspsefqtht4q2"]
+[gd_scene load_steps=9 format=3 uid="uid://cspsefqtht4q2"]
 
 [ext_resource type="Script" uid="uid://dastu71n0pd4f" path="res://scenes/player.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://dxue1tqv1tvm1" path="res://assets/sprites/player.png" id="2_3li8b"]
@@ -6,8 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://t4nf3kbnefro" path="res://scenes/components/HitReceiver.tscn" id="4_mdl7e"]
 [ext_resource type="Script" uid="uid://bvhufuu6pxphs" path="res://scenes/components/health.gd" id="5_qu4a1"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_qu4a1"]
+radius = 10.0
+height = 20.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_v6fml"]
 radius = 19.105
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qu4a1"]
+radius = 10.0499
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v6fml")
@@ -25,9 +32,18 @@ script = ExtResource("2_mdl7e")
 texture = ExtResource("2_3li8b")
 offset = Vector2(0, -9)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="SmallBall" type="MeshInstance2D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_qu4a1")
+
+[node name="NormalShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_v6fml")
+
+[node name="SmallShape" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_qu4a1")
+disabled = true
 
 [node name="HitReceiver" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_mdl7e")]
 collision_layer = 1
@@ -35,6 +51,11 @@ collision_mask = 1
 health = NodePath("../Health")
 damage_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitReceiver"]
+[node name="NormalShape" type="CollisionShape2D" parent="HitReceiver"]
 rotation = 1.5708
 shape = SubResource("CircleShape2D_v6fml")
+
+[node name="SmallShape" type="CollisionShape2D" parent="HitReceiver"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_qu4a1")
+disabled = true

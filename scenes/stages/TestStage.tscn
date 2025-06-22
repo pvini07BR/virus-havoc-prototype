@@ -1,11 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmubduallqtun"]
 
 [ext_resource type="Script" uid="uid://ceorq28sq4wl5" path="res://scripts/stage.gd" id="1_xr8nk"]
-[ext_resource type="PackedScene" uid="uid://0el8c5nsyh8f" path="res://scenes/viruses/TestVirus.tscn" id="2_iu71g"]
+[ext_resource type="Texture2D" uid="uid://bsv6wyspllxp8" path="res://icon.svg" id="2_iu71g"]
 
 [node name="TestStage" type="Node2D"]
 script = ExtResource("1_xr8nk")
 metadata/_custom_type_script = "uid://ceorq28sq4wl5"
 
-[node name="TestVirus" parent="." instance=ExtResource("2_iu71g")]
-position = Vector2(733, 343)
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(802, 320)
+texture = ExtResource("2_iu71g")
