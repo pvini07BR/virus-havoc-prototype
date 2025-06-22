@@ -21,9 +21,6 @@ func _process(delta: float) -> void:
 	
 	is_shrunk = Input.is_action_pressed("shrink")
 	
-	if is_shrunk:
-		vel /= 4
-		
 	normal_shape.disabled = is_shrunk
 	hit_normal_shape.disabled = is_shrunk
 	small_shape.disabled = !is_shrunk
@@ -31,9 +28,12 @@ func _process(delta: float) -> void:
 
 	sprite.visible = !is_shrunk
 	small_ball.visible = is_shrunk
-		
-		
-	velocity = lerp(velocity, vel, 15 * delta)
+	
+	if is_shrunk:
+		vel /= 3
+		velocity = vel
+	else:
+		velocity = lerp(velocity, vel, 15 * delta)
 	
 	move_and_slide()
 
