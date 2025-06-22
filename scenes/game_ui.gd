@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var player = get_parent().get_node("Player")
+@onready var player = get_parent().player
 @onready var hp_bar: ProgressBar = $HP
 
 func _ready() -> void:

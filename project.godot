@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="virus havoc prototype"
-run/main_scene="uid://mpxn7i30oqn3"
+run/main_scene="uid://ca4r4dqnsm2vl"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://scenes/singletons/GameManager.tscn"
 GunManager="*res://scenes/singletons/GunManager.tscn"
+StageManager="*res://scenes/singletons/StageManager.tscn"
 
 [display]
 

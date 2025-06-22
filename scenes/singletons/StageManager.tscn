@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://deo70kycetle2"]
+
+[ext_resource type="Script" uid="uid://nr61p8gg0jll" path="res://scenes/singletons/stage_manager.gd" id="1_yu6tw"]
+[ext_resource type="Script" uid="uid://d1vofv1vg1pyg" path="res://scripts/stage_info.gd" id="2_pr0y7"]
+[ext_resource type="Resource" uid="uid://d4f512fd58ahh" path="res://resources/stages/test_stage.tres" id="3_gdvcc"]
+
+[node name="StageManager" type="Node"]
+script = ExtResource("1_yu6tw")
+stages = Array[ExtResource("2_pr0y7")]([ExtResource("3_gdvcc")])

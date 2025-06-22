@@ -39,8 +39,7 @@ func _process(_delta: float) -> void:
 			if acc_timer.is_stopped():
 				acc_timer.start()
 			damage_buffer += area.damage
-			
-		area.delete_itself()
+		area.delete_parent()
 
 func _on_acc_timer_timeout() -> void:
 	damage_buffer = 0.0

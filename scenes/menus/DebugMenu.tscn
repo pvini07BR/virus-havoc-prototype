@@ -1,0 +1,100 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca4r4dqnsm2vl"]
+
+[ext_resource type="Script" uid="uid://dbgkkmc8baesj" path="res://scenes/menus/debug_menu.gd" id="1_p5kpm"]
+
+[node name="DebugMenu" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p5kpm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GunSelector" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="EquipGunVBox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/GunSelector"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/GunSelector/EquipGunVBox"]
+layout_mode = 2
+text = "Equipped Guns:"
+horizontal_alignment = 1
+
+[node name="EquipGuns" type="ItemList" parent="VBoxContainer/HBoxContainer/GunSelector/EquipGunVBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+auto_width = true
+auto_height = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/GunSelector/EquipGunVBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="EmptySlot" type="Button" parent="VBoxContainer/HBoxContainer/GunSelector/EquipGunVBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Empty"
+
+[node name="AddSlot" type="Button" parent="VBoxContainer/HBoxContainer/GunSelector/EquipGunVBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Add"
+
+[node name="GunListVbox" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/GunSelector"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/GunSelector/GunListVbox"]
+layout_mode = 2
+text = "Select a Gun:"
+horizontal_alignment = 1
+
+[node name="GunList" type="ItemList" parent="VBoxContainer/HBoxContainer/GunSelector/GunListVbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+auto_width = true
+auto_height = true
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="StageSelector" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/StageSelector"]
+layout_mode = 2
+text = "Stages:"
+horizontal_alignment = 1
+
+[node name="StageList" type="ItemList" parent="VBoxContainer/HBoxContainer/StageSelector"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+auto_width = true
+auto_height = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/GunSelector/EquipGunVBox/HBoxContainer/EmptySlot" to="." method="_on_empty_slot_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/GunSelector/EquipGunVBox/HBoxContainer/AddSlot" to="." method="_on_add_slot_pressed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/GunSelector/GunListVbox/GunList" to="." method="_on_gun_list_item_selected"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

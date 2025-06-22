@@ -8,6 +8,6 @@ class_name HitSender
 func _ready() -> void:
 	pass
 
-func delete_itself():
+func delete_parent():
 	if delete_parent_at_hit:
 		get_parent().queue_free()
