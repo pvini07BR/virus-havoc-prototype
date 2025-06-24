@@ -10,6 +10,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvk24"]
+resource_local_to_scene = true
 bg_color = Color(0, 1, 0, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -17,12 +18,13 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="HealthBar" type="ProgressBar"]
-visible = false
-offset_left = -48.0
-offset_right = 47.0
-offset_bottom = 16.0
+offset_left = -25.0
+offset_top = -4.0
+offset_right = 25.0
+offset_bottom = 4.0
 theme_override_styles/background = SubResource("StyleBoxFlat_prvir")
 theme_override_styles/fill = SubResource("StyleBoxFlat_pvk24")
+value = 20.09
 show_percentage = false
 script = ExtResource("1_prvir")
 

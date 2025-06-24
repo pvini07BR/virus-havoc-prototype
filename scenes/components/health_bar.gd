@@ -2,6 +2,8 @@ extends ProgressBar
 
 @export var health: Health
 
+@onready var fill: StyleBoxFlat = get("theme_override_styles/fill")
+
 func _ready() -> void:
 	self.visible = false
 	if health:
@@ -16,5 +18,7 @@ func _on_health_damage(_amount: float, new_hp: float):
 	self.value = new_hp
 
 func _on_value_changed(val: float) -> void:
+	fill.bg_color = Color.RED.lerp(Color.GREEN, val / max_value)
+	
 	if val < self.max_value:
 		self.visible = true
