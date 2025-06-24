@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq18bb8eg4rl2"]
+
+[ext_resource type="Script" uid="uid://b4mu4bp4c468n" path="res://scenes/bullets/zip_bomb.gd" id="1_rbgs7"]
+[ext_resource type="Texture2D" uid="uid://x5va4bmf0hjs" path="res://assets/sprites/bullets/zipBomb.png" id="2_rbgs7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbgs7"]
+radius = 11.0
+
+[node name="ZipBomb" type="CharacterBody2D"]
+script = ExtResource("1_rbgs7")
+metadata/_custom_type_script = "uid://cvwhpgji8slvk"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_rbgs7")
+
+[node name="Touch" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Touch"]
+shape = SubResource("CircleShape2D_rbgs7")
+
+[connection signal="area_entered" from="Touch" to="." method="_on_touch_area_entered"]

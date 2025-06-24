@@ -15,9 +15,7 @@ motion_mode = 1
 script = ExtResource("1_nj2iv")
 hit_sender = NodePath("HitSender")
 
-[node name="Visual" type="Node2D" parent="."]
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Visual"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(-6, 0)
 rotation = 1.5708
 scale = Vector2(4.00454, 4)

@@ -83,8 +83,8 @@ shrink={
 
 [layer_names]
 
-2d_physics/layer_1="Player Damage"
-2d_physics/layer_2="Enemy Damage"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemy"
 
 [rendering]
 

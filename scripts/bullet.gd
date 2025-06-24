@@ -6,14 +6,16 @@ class_name Bullet
 
 @export var affects_player: bool = false :
 	set(value):
-		hit_sender.set_collision_layer_value(1, affects_player)
-		hit_sender.set_collision_mask_value(1, affects_player)
+		if is_node_ready():
+			hit_sender.set_collision_layer_value(1, affects_player)
+			hit_sender.set_collision_mask_value(1, affects_player)
 		affects_player = value
 		
 @export var affects_enemies: bool = false :
 	set(value):
-		hit_sender.set_collision_layer_value(2, affects_enemies)
-		hit_sender.set_collision_mask_value(2, affects_enemies)
+		if is_node_ready():
+			hit_sender.set_collision_layer_value(2, affects_enemies)
+			hit_sender.set_collision_mask_value(2, affects_enemies)
 		affects_enemies = value
 
 func _ready() -> void:

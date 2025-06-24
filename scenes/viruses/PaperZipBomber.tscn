@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqbfktevgkelr"]
+
+[ext_resource type="PackedScene" uid="uid://dq18bb8eg4rl2" path="res://scenes/bullets/ZipBomb.tscn" id="1_kpm52"]
+[ext_resource type="Texture2D" uid="uid://ck1l0s0sgr7fm" path="res://assets/sprites/viruses/virus_paperPlaneBomber.png" id="1_q123f"]
+
+[node name="PaperZipBomber" type="Node2D"]
+
+[node name="ZipBomb" parent="." instance=ExtResource("1_kpm52")]
+position = Vector2(1, 16)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_q123f")
+offset = Vector2(0, 4)

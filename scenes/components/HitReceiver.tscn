@@ -7,11 +7,7 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_hnytm")
 
-[node name="AccumulateTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="CooldownTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="AccumulateTimer" to="." method="_on_acc_timer_timeout"]
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

@@ -29,6 +29,7 @@ shape = SubResource("CircleShape2D_gp7vw")
 
 [node name="HitSender" type="Area2D" parent="."]
 script = ExtResource("6_h25nx")
+mode = 1
 delete_parent_at_hit = false
 metadata/_custom_type_script = "uid://rjqg6hvr6pib"
 
