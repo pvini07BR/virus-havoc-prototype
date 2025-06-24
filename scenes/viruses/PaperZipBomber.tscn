@@ -1,9 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqbfktevgkelr"]
+[gd_scene load_steps=9 format=3 uid="uid://dqbfktevgkelr"]
 
+[ext_resource type="Script" uid="uid://c080xt8a8sibi" path="res://scenes/viruses/paper_zip_bomber.gd" id="1_ao87j"]
 [ext_resource type="PackedScene" uid="uid://dq18bb8eg4rl2" path="res://scenes/bullets/ZipBomb.tscn" id="1_kpm52"]
 [ext_resource type="Texture2D" uid="uid://ck1l0s0sgr7fm" path="res://assets/sprites/viruses/virus_paperPlaneBomber.png" id="1_q123f"]
+[ext_resource type="Script" uid="uid://bvhufuu6pxphs" path="res://scenes/components/health.gd" id="3_jto4d"]
+[ext_resource type="PackedScene" uid="uid://c5d8dl62djdjy" path="res://scenes/components/HealthBar.tscn" id="4_iuycf"]
+[ext_resource type="Script" uid="uid://h6n53b0g7l2w" path="res://scenes/components/hitreceiver.gd" id="6_78f80"]
 
-[node name="PaperZipBomber" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_78f80"]
+radius = 13.0384
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_78f80"]
+normal = Vector2(-1, 0)
+
+[node name="PaperZipBomber" type="CharacterBody2D"]
+script = ExtResource("1_ao87j")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_jto4d")
+max_health = 4.0
+metadata/_custom_type_script = "uid://bvhufuu6pxphs"
 
 [node name="ZipBomb" parent="." instance=ExtResource("1_kpm52")]
 position = Vector2(1, 16)
@@ -11,3 +27,28 @@ position = Vector2(1, 16)
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_q123f")
 offset = Vector2(0, 4)
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_iuycf")]
+visible = true
+offset_left = -21.0
+offset_top = 31.0
+offset_right = 23.0
+offset_bottom = 38.0
+health = NodePath("../Health")
+
+[node name="HitReceiver" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("6_78f80")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://h6n53b0g7l2w"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitReceiver"]
+shape = SubResource("CircleShape2D_78f80")
+
+[node name="Scanning" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scanning"]
+shape = SubResource("WorldBoundaryShape2D_78f80")
+
+[connection signal="body_entered" from="Scanning" to="." method="_on_scanning_body_entered"]

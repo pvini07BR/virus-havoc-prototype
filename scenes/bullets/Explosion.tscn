@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://d1a3wyhrhnu3u"]
 
-[ext_resource type="Script" uid="uid://cvwhpgji8slvk" path="res://scripts/bullet.gd" id="1_6u8ds"]
+[ext_resource type="Script" uid="uid://bbe7gdqynpniy" path="res://scenes/bullets/explosion.gd" id="1_yexon"]
 [ext_resource type="Texture2D" uid="uid://1ypynie8rio" path="res://assets/sprites/bullets/explosion.png" id="2_khhx8"]
 [ext_resource type="Script" uid="uid://rjqg6hvr6pib" path="res://scenes/components/hit_sender.gd" id="3_yexon"]
 
@@ -71,9 +71,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yexon"]
 radius = 94.0851
 
-[node name="Explosion" type="CharacterBody2D" node_paths=PackedStringArray("hit_sender")]
-script = ExtResource("1_6u8ds")
-hit_sender = NodePath("HitSender")
+[node name="Explosion" type="CharacterBody2D"]
+script = ExtResource("1_yexon")
 affects_player = true
 affects_enemies = true
 metadata/_custom_type_script = "uid://cvwhpgji8slvk"
@@ -94,4 +93,4 @@ metadata/_custom_type_script = "uid://rjqg6hvr6pib"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
 shape = SubResource("CircleShape2D_yexon")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="queue_free"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
