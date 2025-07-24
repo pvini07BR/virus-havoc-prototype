@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StageInfo" load_steps=3 format=3 uid="uid://cyhp85vlxcc0q"]
+
+[ext_resource type="PackedScene" uid="uid://bax7kad77bhnf" path="res://scenes/stages/TestStage2.tscn" id="1_cqnmf"]
+[ext_resource type="Script" uid="uid://d1vofv1vg1pyg" path="res://scripts/stage_info.gd" id="2_x80tp"]
+
+[resource]
+script = ExtResource("2_x80tp")
+name = "Test Stage 2"
+scene = ExtResource("1_cqnmf")
+metadata/_custom_type_script = "uid://d1vofv1vg1pyg"

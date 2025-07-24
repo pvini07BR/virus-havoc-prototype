@@ -32,7 +32,10 @@ func refresh_equipped_guns():
 			equip_guns.add_item(GunManager.guns[gun_index - 1].name)
 
 func _on_play_button_pressed() -> void:
-	GameManager.switch_scene(game_scene)
+	if !stagelist.get_selected_items().is_empty():
+		var inst = game_scene.instantiate() as Game
+		inst.stage_index = stagelist.get_selected_items()[0]
+		GameManager.switch_scene_instance(inst)
 
 func _on_gun_list_item_selected(index: int) -> void:
 	if !equip_guns.get_selected_items().is_empty():

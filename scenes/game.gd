@@ -5,6 +5,7 @@ class_name Game
 @export var player: CharacterBody2D
 
 var stage_scene: Stage = null
+var stage_index = 0
 
 @onready var camera: Camera2D = $Camera2D
 
@@ -12,7 +13,7 @@ var stage_scene: Stage = null
 @onready var bottom_bound: WorldBoundaryShape2D = $Bounds/Bottom.shape
 
 func _ready():
-	stage_scene = StageManager.stages[StageManager.stage_index].scene.instantiate()
+	stage_scene = StageManager.stages[stage_index].scene.instantiate()
 	
 	right_bound.distance = -stage_scene.bounds.x
 	bottom_bound.distance = -stage_scene.bounds.y

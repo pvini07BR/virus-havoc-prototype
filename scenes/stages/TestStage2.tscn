@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bax7kad77bhnf"]
+
+[ext_resource type="Script" uid="uid://ceorq28sq4wl5" path="res://scripts/stage.gd" id="1_kp3l1"]
+[ext_resource type="Texture2D" uid="uid://bsv6wyspllxp8" path="res://icon.svg" id="2_n0k1j"]
+
+[node name="TestStage2" type="Node2D"]
+script = ExtResource("1_kp3l1")
+bounds = Vector2i(2560, 1440)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+offset_right = 2560.0
+offset_bottom = 1440.0
+texture = ExtResource("2_n0k1j")
