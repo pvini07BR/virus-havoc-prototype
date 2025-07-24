@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmubduallqtun"]
+[gd_scene load_steps=2 format=3 uid="uid://bmubduallqtun"]
 
 [ext_resource type="Script" uid="uid://cccfgtqn417je" path="res://scenes/stages/test_stage.gd" id="1_xr8nk"]
-[ext_resource type="PackedScene" uid="uid://0el8c5nsyh8f" path="res://scenes/viruses/TestVirus.tscn" id="3_qhdpl"]
 
 [node name="TestStage" type="Node2D"]
 script = ExtResource("1_xr8nk")
 metadata/_custom_type_script = "uid://ceorq28sq4wl5"
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="FolderSpawnTimer" type="Timer" parent="."]
+wait_time = 0.25
 autostart = true
 
-[node name="TestVirus" parent="." instance=ExtResource("3_qhdpl")]
-position = Vector2(735, 400)
+[node name="PlaneBomberSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="FolderSpawnTimer" to="." method="_on_folder_spawn_timer_timeout"]
+[connection signal="timeout" from="PlaneBomberSpawnTimer" to="." method="_on_plane_bomber_spawn_timer_timeout"]

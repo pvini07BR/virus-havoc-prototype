@@ -26,4 +26,4 @@ func _ready():
 	add_child(stage_scene)
 
 func spawn_bullet(bullet: Bullet):
-	$Bullets.add_child(bullet)
+	$Bullets.call_deferred("add_child", bullet)
