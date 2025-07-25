@@ -9,6 +9,7 @@ var game_scene = preload("res://scenes/Game.tscn")
 
 @onready var gun_list_vbox: VBoxContainer = $VBoxContainer/HBoxContainer/GunSelector/GunListVbox
 @onready var empty_slot_button: Button = $VBoxContainer/HBoxContainer/GunSelector/EquipGunVBox/HBoxContainer/EmptySlot
+@onready var warning: Label = $VBoxContainer/Warning
 
 func _ready():
 	refresh_equipped_guns()
@@ -22,6 +23,8 @@ func _ready():
 func _process(_delta: float) -> void:
 	gun_list_vbox.visible = !equip_guns.get_selected_items().is_empty()
 	empty_slot_button.visible = !equip_guns.get_selected_items().is_empty()
+	warning.visible = stagelist.get_selected_items().is_empty()
+	$VBoxContainer/PlayButton.disabled = stagelist.get_selected_items().is_empty()
 
 func refresh_equipped_guns():
 	equip_guns.clear()

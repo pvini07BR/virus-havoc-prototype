@@ -2,7 +2,14 @@ extends Node2D
 
 @onready var player = get_parent()
 
-var current_gun_index: int = 0
+signal on_gun_changed(index: int)
+
+var current_gun_index: int = 0 :
+	set(value):
+		if current_gun_index != value:
+			on_gun_changed.emit(value)
+			current_gun_index = value
+
 var equipped_gun = null :
 	set(value):
 		if equipped_gun != value:

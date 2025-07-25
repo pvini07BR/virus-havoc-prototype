@@ -94,6 +94,11 @@ theme_override_constants/separation = 30
 layout_mode = 2
 text = "Play"
 
+[node name="Warning" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Please select a stage to play."
+horizontal_alignment = 1
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/GunSelector/EquipGunVBox/HBoxContainer/EmptySlot" to="." method="_on_empty_slot_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/GunSelector/EquipGunVBox/HBoxContainer/AddSlot" to="." method="_on_add_slot_pressed"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer/GunSelector/GunListVbox/GunList" to="." method="_on_gun_list_item_selected"]

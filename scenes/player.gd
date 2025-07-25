@@ -9,7 +9,11 @@ extends CharacterBody2D
 @onready var small_shape: CollisionShape2D = $SmallShape
 @onready var hit_small_shape: CollisionShape2D = $HitReceiver/SmallShape
 
+@onready var gun_manager = $Guns
+
 var is_shrunk: bool = false
+
+signal on_gun_changed(index: int)
 
 func _ready() -> void:
 	Input.set_use_accumulated_input(false)
@@ -39,3 +43,6 @@ func _process(delta: float) -> void:
 
 func get_health_component() -> Health:
 	return get_node_or_null("Health")
+
+func _on_guns_on_gun_changed(index: int) -> void:
+	on_gun_changed.emit(index)

@@ -60,3 +60,5 @@ shape = SubResource("CircleShape2D_v6fml")
 rotation = 1.5708
 shape = SubResource("CircleShape2D_qu4a1")
 disabled = true
+
+[connection signal="on_gun_changed" from="Guns" to="." method="_on_guns_on_gun_changed"]
