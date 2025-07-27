@@ -19,7 +19,7 @@ func _on_shoot_timer_timeout() -> void:
 	if !shooted:
 		var player = GameManager.get_player()
 		if player != null:
-			var inst = bullet.instantiate() as Bullet
+			var inst = bullet.instantiate() as BulletBehavior
 			inst.affects_enemies = false
 			inst.affects_player = true
 			inst.position = self.position

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5lvk5b11absr"]
 
-[ext_resource type="Script" uid="uid://dshre4f72xq23" path="res://scenes/bullets/laser_bullet.gd" id="1_nj2iv"]
+[ext_resource type="Script" uid="uid://dshre4f72xq23" path="res://scenes/bullets/generic_bullet_behavior.gd" id="1_nj2iv"]
 [ext_resource type="PackedScene" uid="uid://dohhjahl4nl6e" path="res://scenes/components/HitSender.tscn" id="2_nnty6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nnty6"]

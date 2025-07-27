@@ -13,7 +13,7 @@ func switch_scene_instance(new_scene: Node):
 	current_scene = new_scene
 	get_tree().root.add_child(current_scene)
 
-func spawn_bullet(bullet: Bullet):
+func spawn_bullet(bullet: BulletBehavior):
 	if current_scene is Game:
 		current_scene.spawn_bullet(bullet)
 		

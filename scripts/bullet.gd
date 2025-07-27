@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Bullet
+class_name BulletBehavior
 
 @export var hit_sender: HitSender
 
@@ -25,6 +25,15 @@ func _ready() -> void:
 		
 		hit_sender.set_collision_mask_value(1, affects_player)
 		hit_sender.set_collision_mask_value(2, affects_enemies)
+		
+func bullet_proccess(_delta: float):
+	# Override this function in the bullet behavior codes
+	pass
+		
+func _process(delta: float) -> void:
+	self.bullet_proccess(delta)
+	move_and_slide()
+	despawn_itself()
 
 func despawn_itself() -> void:
 	var rect = Rect2i(0, 0, GameManager.current_scene.stage_scene.bounds.x, GameManager.current_scene.stage_scene.bounds.y)

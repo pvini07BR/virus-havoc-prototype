@@ -11,7 +11,7 @@ radius = 10.0
 height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v6fml"]
-radius = 19.105
+radius = 19.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qu4a1"]
 radius = 10.0499

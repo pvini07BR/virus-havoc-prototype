@@ -9,7 +9,7 @@ var cooldown: bool = false
 @onready var bottom_shoot_point: Marker2D = $BottomShootPoint
 
 func shoot_bullet(pos: Vector2):
-	var inst = bullet.instantiate() as Bullet
+	var inst = bullet.instantiate() as BulletBehavior
 	inst.affects_player = false
 	inst.affects_enemies = true
 	GameManager.spawn_bullet(inst)

@@ -8,7 +8,7 @@ var cooldown: bool = false
 
 func shoot_down() -> void:
 	if !cooldown:
-		var inst = bullet.instantiate() as Bullet
+		var inst = bullet.instantiate() as BulletBehavior
 		inst.affects_player = false
 		inst.affects_enemies = true
 		GameManager.spawn_bullet(inst)
