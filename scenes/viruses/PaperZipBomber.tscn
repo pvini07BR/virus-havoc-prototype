@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqbfktevgkelr"]
+[gd_scene load_steps=12 format=3 uid="uid://dqbfktevgkelr"]
 
 [ext_resource type="Script" uid="uid://c080xt8a8sibi" path="res://scenes/viruses/paper_zip_bomber.gd" id="1_ao87j"]
 [ext_resource type="Texture2D" uid="uid://ck1l0s0sgr7fm" path="res://assets/sprites/viruses/virus_paperPlaneBomber.png" id="1_q123f"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bvhufuu6pxphs" path="res://scenes/components/health.gd" id="3_jto4d"]
 [ext_resource type="PackedScene" uid="uid://c5d8dl62djdjy" path="res://scenes/components/HealthBar.tscn" id="4_iuycf"]
 [ext_resource type="Script" uid="uid://h6n53b0g7l2w" path="res://scenes/components/hitreceiver.gd" id="6_78f80"]
+[ext_resource type="PackedScene" uid="uid://dohhjahl4nl6e" path="res://scenes/components/HitSender.tscn" id="7_33mx3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78f80"]
 resource_local_to_scene = true
@@ -16,7 +17,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_78f80"]
-radius = 13.0384
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_33mx3"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_78f80"]
 b = Vector2(0, 720)
@@ -46,6 +48,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_78f80")
 health = NodePath("../Health")
 
 [node name="HitReceiver" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+position = Vector2(12, 2)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("6_78f80")
@@ -54,6 +57,12 @@ metadata/_custom_type_script = "uid://h6n53b0g7l2w"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitReceiver"]
 shape = SubResource("CircleShape2D_78f80")
+
+[node name="HitSender" parent="." instance=ExtResource("7_33mx3")]
+position = Vector2(12, 2)
+hitbox_shape = SubResource("CircleShape2D_33mx3")
+mode = 1
+delete_parent_at_hit = false
 
 [node name="Scanning" type="Area2D" parent="."]
 

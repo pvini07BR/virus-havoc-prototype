@@ -2,23 +2,19 @@
 
 [ext_resource type="Script" uid="uid://dshre4f72xq23" path="res://scenes/bullets/generic_bullet_behavior.gd" id="1_62qeq"]
 [ext_resource type="Texture2D" uid="uid://b5iclqujt1quq" path="res://assets/sprites/viruses/shootingFolderPaper.png" id="2_fh67m"]
-[ext_resource type="Script" uid="uid://rjqg6hvr6pib" path="res://scenes/components/hit_sender.gd" id="3_62qeq"]
+[ext_resource type="PackedScene" uid="uid://dohhjahl4nl6e" path="res://scenes/components/HitSender.tscn" id="3_62qeq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_62qeq"]
-size = Vector2(24, 18)
+[sub_resource type="CircleShape2D" id="CircleShape2D_62qeq"]
+radius = 7.0
 
-[node name="PaperBullet" type="CharacterBody2D"]
+[node name="PaperBullet" type="CharacterBody2D" node_paths=PackedStringArray("hit_sender")]
 script = ExtResource("1_62qeq")
+hit_sender = NodePath("HitSender")
 
 [node name="ShootingFolderPaper" type="Sprite2D" parent="."]
 position = Vector2(-2, 0)
 rotation = 1.5708
 texture = ExtResource("2_fh67m")
 
-[node name="HitSender" type="Area2D" parent="."]
-script = ExtResource("3_62qeq")
-metadata/_custom_type_script = "uid://rjqg6hvr6pib"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
-position = Vector2(-2, 0)
-shape = SubResource("RectangleShape2D_62qeq")
+[node name="HitSender" parent="." instance=ExtResource("3_62qeq")]
+hitbox_shape = SubResource("CircleShape2D_62qeq")

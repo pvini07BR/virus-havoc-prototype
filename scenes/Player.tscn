@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cspsefqtht4q2"]
+[gd_scene load_steps=10 format=3 uid="uid://cspsefqtht4q2"]
 
 [ext_resource type="Script" uid="uid://dastu71n0pd4f" path="res://scenes/player.gd" id="1_v6fml"]
 [ext_resource type="Texture2D" uid="uid://dxue1tqv1tvm1" path="res://assets/sprites/player.png" id="2_3li8b"]
@@ -15,6 +15,9 @@ radius = 19.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qu4a1"]
 radius = 10.0499
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_70d11"]
+radius = 38.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -61,4 +64,16 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_qu4a1")
 disabled = true
 
+[node name="GrazingArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrazingArea"]
+shape = SubResource("CircleShape2D_70d11")
+
+[node name="GrazeLines" type="Line2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+points = PackedVector2Array(0, -38, 10, -37, 19, -33, 27, -27, 33, -19, 37, -10, 38, 0, 37, 10, 33, 19, 27, 27, 19, 33, 10, 37, 0, 38, -10, 37, -19, 33, -27, 27, -33, 19, -37, 10, -38, 0, -37, -10, -33, -19, -27, -27, -19, -33, -10, -37)
+closed = true
+width = 1.0
+
 [connection signal="on_gun_changed" from="Guns" to="." method="_on_guns_on_gun_changed"]
+[connection signal="area_entered" from="GrazingArea" to="." method="on_grazing_area_area_entered"]

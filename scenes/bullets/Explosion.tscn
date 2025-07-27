@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bbe7gdqynpniy" path="res://scenes/bullets/explosion.gd" id="1_yexon"]
 [ext_resource type="Texture2D" uid="uid://1ypynie8rio" path="res://assets/sprites/bullets/explosion.png" id="2_khhx8"]
-[ext_resource type="Script" uid="uid://rjqg6hvr6pib" path="res://scenes/components/hit_sender.gd" id="3_yexon"]
+[ext_resource type="PackedScene" uid="uid://dohhjahl4nl6e" path="res://scenes/components/HitSender.tscn" id="4_suwdb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yexon"]
 atlas = ExtResource("2_khhx8")
@@ -71,8 +71,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yexon"]
 radius = 94.0851
 
-[node name="Explosion" type="CharacterBody2D"]
+[node name="Explosion" type="CharacterBody2D" node_paths=PackedStringArray("hit_sender")]
 script = ExtResource("1_yexon")
+hit_sender = NodePath("HitSender")
 affects_player = true
 affects_enemies = true
 metadata/_custom_type_script = "uid://cvwhpgji8slvk"
@@ -82,15 +83,11 @@ sprite_frames = SubResource("SpriteFrames_qcppq")
 autoplay = "default"
 offset = Vector2(-19, -15)
 
-[node name="HitSender" type="Area2D" parent="."]
+[node name="HitSender" parent="." instance=ExtResource("4_suwdb")]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("3_yexon")
+hitbox_shape = SubResource("CircleShape2D_yexon")
 damage = 3.0
 delete_parent_at_hit = false
-metadata/_custom_type_script = "uid://rjqg6hvr6pib"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
-shape = SubResource("CircleShape2D_yexon")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
