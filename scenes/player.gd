@@ -56,14 +56,14 @@ func on_grazing_area_area_entered(area: Area2D) -> void:
 			var space_state = get_world_2d().direct_space_state
 			var query = PhysicsShapeQueryParameters2D.new()
 			query.shape = area.hitbox_shape
-			query.transform = Transform2D(0, parent.position + parent.velocity.normalized() * 38)
+			query.transform = Transform2D(parent.global_rotation, parent.global_position)
+			query.motion = parent.velocity.normalized() * 38
 			
 			var results = space_state.intersect_shape(query)
 			var will_hit_player = false
-			for result in results:
-				if result.collider == self:
+			if results.size() > 0:
+				if results[0].collider == self:
 					will_hit_player = true
-					break
 			
 			if not will_hit_player:
 				create_tween().tween_property(graze_lines, "modulate:a", 0.0, 0.5).from(1.0)
