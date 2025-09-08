@@ -1,18 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvnyqsmi0gf48"]
+[gd_scene load_steps=10 format=3 uid="uid://cvnyqsmi0gf48"]
 
 [ext_resource type="Script" uid="uid://dwpngvhoqs5ur" path="res://scenes/viruses/shooting_folder.gd" id="1_6yne1"]
 [ext_resource type="Texture2D" uid="uid://8cacotysk2xk" path="res://assets/sprites/viruses/shootingFolderTab1.png" id="1_oxonf"]
 [ext_resource type="Texture2D" uid="uid://bobs1kruc5als" path="res://assets/sprites/viruses/shootingFolderTab2.png" id="2_k7mjw"]
-[ext_resource type="Script" uid="uid://h6n53b0g7l2w" path="res://scenes/components/hitreceiver.gd" id="3_k7mjw"]
+[ext_resource type="Script" uid="uid://h6n53b0g7l2w" path="res://scenes/components/hit_receiver.gd" id="3_k7mjw"]
 [ext_resource type="Script" uid="uid://bvhufuu6pxphs" path="res://scenes/components/health.gd" id="4_lmhbx"]
 [ext_resource type="PackedScene" uid="uid://c5d8dl62djdjy" path="res://scenes/components/HealthBar.tscn" id="5_6ib00"]
 [ext_resource type="PackedScene" uid="uid://dohhjahl4nl6e" path="res://scenes/components/HitSender.tscn" id="5_6yne1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmhbx"]
 size = Vector2(24, 30)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6yne1"]
-radius = 12.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wj6cf"]
 resource_local_to_scene = true
@@ -46,9 +43,10 @@ position = Vector2(11, 0)
 shape = SubResource("RectangleShape2D_lmhbx")
 
 [node name="HitSender" parent="." instance=ExtResource("5_6yne1")]
-hitbox_shape = SubResource("CircleShape2D_6yne1")
 mode = 1
-delete_parent_at_hit = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
+shape = SubResource("RectangleShape2D_lmhbx")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("4_lmhbx")

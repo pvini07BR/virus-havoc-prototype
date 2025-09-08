@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://0el8c5nsyh8f"]
+[gd_scene load_steps=9 format=3 uid="uid://0el8c5nsyh8f"]
 
 [ext_resource type="PackedScene" uid="uid://c6u357c0jbhru" path="res://scenes/components/Health.tscn" id="1_gp7vw"]
 [ext_resource type="Script" uid="uid://f1dlh3frqw8e" path="res://scenes/viruses/test_virus.gd" id="1_o1p3m"]
@@ -8,9 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dohhjahl4nl6e" path="res://scenes/components/HitSender.tscn" id="6_h25nx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gp7vw"]
-radius = 18.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_h25nx"]
 radius = 18.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h25nx"]
@@ -39,9 +36,10 @@ health = NodePath("../Health")
 shape = SubResource("CircleShape2D_gp7vw")
 
 [node name="HitSender" parent="." instance=ExtResource("6_h25nx")]
-hitbox_shape = SubResource("CircleShape2D_h25nx")
 mode = 1
-delete_parent_at_hit = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
+shape = SubResource("CircleShape2D_gp7vw")
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_bksiq")]
 offset_top = 29.0

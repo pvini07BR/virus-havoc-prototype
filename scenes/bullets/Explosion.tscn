@@ -69,7 +69,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yexon"]
-radius = 94.0851
+radius = 100.0
 
 [node name="Explosion" type="CharacterBody2D" node_paths=PackedStringArray("hit_sender")]
 script = ExtResource("1_yexon")
@@ -86,8 +86,10 @@ offset = Vector2(-19, -15)
 [node name="HitSender" parent="." instance=ExtResource("4_suwdb")]
 collision_layer = 3
 collision_mask = 3
-hitbox_shape = SubResource("CircleShape2D_yexon")
 damage = 3.0
-delete_parent_at_hit = false
+mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
+shape = SubResource("CircleShape2D_yexon")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf2f16ortvvdp"]
+
+[ext_resource type="Script" uid="uid://bvhufuu6pxphs" path="res://scenes/components/health.gd" id="1_potlo"]
+[ext_resource type="Script" uid="uid://h6n53b0g7l2w" path="res://scenes/components/hit_receiver.gd" id="2_u5pd0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_potlo"]
+size = Vector2(320, 240)
+
+[node name="CoveringPopup" type="Node2D"]
+z_index = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 240.0
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("1_potlo")
+max_health = 5.0
+metadata/_custom_type_script = "uid://bvhufuu6pxphs"
+
+[node name="HitReceiver" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_u5pd0")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://h6n53b0g7l2w"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitReceiver"]
+position = Vector2(160, 120)
+shape = SubResource("RectangleShape2D_potlo")

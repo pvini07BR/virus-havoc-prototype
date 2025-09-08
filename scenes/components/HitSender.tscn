@@ -4,5 +4,3 @@
 
 [node name="HitSender" type="Area2D"]
 script = ExtResource("1_2u17e")
-
-[node name="colshape" type="CollisionShape2D" parent="."]

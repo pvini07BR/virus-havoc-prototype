@@ -49,21 +49,21 @@ func get_health_component() -> Health:
 func _on_guns_on_gun_changed(index: int) -> void:
 	on_gun_changed.emit(index)
 
-func on_grazing_area_area_entered(area: Area2D) -> void:
-	if area is HitSender:
-		var parent = area.get_parent()
-		if parent is BulletBehavior:
-			var space_state = get_world_2d().direct_space_state
-			var query = PhysicsShapeQueryParameters2D.new()
-			query.shape = area.hitbox_shape
-			query.transform = Transform2D(parent.global_rotation, parent.global_position)
-			query.motion = parent.velocity.normalized() * 38
-			
-			var results = space_state.intersect_shape(query)
-			var will_hit_player = false
-			if results.size() > 0:
-				if results[0].collider == self:
-					will_hit_player = true
-			
-			if not will_hit_player:
-				create_tween().tween_property(graze_lines, "modulate:a", 0.0, 0.5).from(1.0)
+#func on_grazing_area_area_entered(area: Area2D) -> void:
+	#if area is HitSender:
+		#var parent = area.get_parent()
+		#if parent is BulletBehavior:
+			#var space_state = get_world_2d().direct_space_state
+			#var query = PhysicsShapeQueryParameters2D.new()
+			#query.shape = area.hitbox_shape
+			#query.transform = Transform2D(parent.global_rotation, parent.global_position)
+			#query.motion = parent.velocity.normalized() * 38
+			#
+			#var results = space_state.intersect_shape(query)
+			#var will_hit_player = false
+			#if results.size() > 0:
+				#if results[0].collider == self:
+					#will_hit_player = true
+			#
+			#if not will_hit_player:
+				#create_tween().tween_property(graze_lines, "modulate:a", 0.0, 0.5).from(1.0)

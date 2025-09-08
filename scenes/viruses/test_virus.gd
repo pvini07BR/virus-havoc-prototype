@@ -13,7 +13,7 @@ func _on_shoot_timer_timeout() -> void:
 		shoot_bullet((TAU/div)*i+sprite.rotation)
 
 func shoot_bullet(angle: float):
-	var inst = bullet.instantiate() as Bullet
+	var inst = bullet.instantiate() as BulletBehavior
 	inst.affects_enemies = false
 	inst.affects_player = true
 	inst.position = self.position

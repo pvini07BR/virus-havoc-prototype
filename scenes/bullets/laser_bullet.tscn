@@ -21,4 +21,6 @@ scale = Vector2(4.00454, 4)
 mesh = SubResource("CapsuleMesh_nnty6")
 
 [node name="HitSender" parent="." instance=ExtResource("2_nnty6")]
-hitbox_shape = SubResource("CircleShape2D_nnty6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
+shape = SubResource("CircleShape2D_nnty6")

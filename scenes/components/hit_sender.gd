@@ -1,49 +1,39 @@
-@tool
 extends Area2D
 
 class_name HitSender
 
 enum DamageMode {
-	ONCE_PER_BODY,
-	CONTINUOUS
+	# The sender will delete its parent with any receiver it collides with.
+	DELETE_AT_HIT,
+	# The sender will deal damage every frame to any receiver it collides with, every frame.
+	EVERY_FRAME,
+	# The sender will deal damage to any receiver it collides with, only once per receiver.
+	ONCE_PER_RECEIVER
 }
 
-@onready var colshape: CollisionShape2D = $colshape
-
-@export var hitbox_shape: Shape2D = null:
-	set(value):
-		if hitbox_shape != value:
-			if is_node_ready():
-				colshape.shape = value
-			hitbox_shape = value
-
 @export var damage: float = 1.0
-@export var mode: DamageMode = DamageMode.ONCE_PER_BODY
-@export var delete_parent_at_hit: bool = true
+@export var mode: DamageMode = DamageMode.DELETE_AT_HIT
 
-var already_hit: Array[HitReceiver] = []
-
-func _ready() -> void:
-	colshape.shape = hitbox_shape
+var has_hit: Array[HitReceiver] = []
 
 func _process(_delta: float) -> void:
-	var can_delete := true
-	var has_targets := false
-
+	var receivers: Array[HitReceiver] = []
 	for area in get_overlapping_areas():
-		if not area is HitReceiver:
-			continue
-
-		has_targets = true
-
-		if mode == DamageMode.ONCE_PER_BODY:
-			if not already_hit.has(area):
-				area.receive_hit(damage)
-				already_hit.append(area)
-			if not already_hit.has(area):
-				can_delete = false
-		elif mode == DamageMode.CONTINUOUS:
-			area.receive_hit(damage)
-
-	if mode == DamageMode.ONCE_PER_BODY and delete_parent_at_hit and can_delete and has_targets:
+		if area is HitReceiver:
+			receivers.append(area)
+			
+	var damaged = false
+			
+	for r in receivers:
+		if mode == DamageMode.ONCE_PER_RECEIVER:
+			if not has_hit.has(r):
+				r.receive_hit(damage)
+				damaged = true
+				has_hit.append(r)
+		else:
+			r.receive_hit(damage)
+			damaged = true
+		
+	if mode == DamageMode.DELETE_AT_HIT and damaged:
 		get_parent().queue_free()
+		
