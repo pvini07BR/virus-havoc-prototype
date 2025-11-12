@@ -1,5 +1,12 @@
 extends CharacterBody2D
 
+class_name Player
+
+enum Direction {
+	LEFT,
+	RIGHT
+}
+
 @onready var sprite: Sprite2D = $Sprite
 @onready var small_ball: MeshInstance2D = $SmallBall
 
@@ -13,7 +20,10 @@ extends CharacterBody2D
 
 @onready var graze_lines: Line2D = $GrazeLines
 
-var is_shrunk: bool = false
+@export var lock_facing := true
+
+var is_shrunk := false
+var direction := Direction.RIGHT
 
 signal on_gun_changed(index: int)
 
@@ -21,8 +31,21 @@ func _ready() -> void:
 	Input.set_use_accumulated_input(false)
 
 func _process(delta: float) -> void:
-	var input_axis = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
+	var input_axis = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
+	if !lock_facing:
+		if input_axis.x < 0:
+			direction = Direction.LEFT
+		elif input_axis.x > 0:
+			direction = Direction.RIGHT
+		
+	if direction == Direction.RIGHT:
+		sprite.flip_h = false
+		gun_manager.scale.x = 1
+	else:
+		sprite.flip_h = true
+		gun_manager.scale.x = -1
+		
 	var vel =  input_axis * 400
 	
 	is_shrunk = Input.is_action_pressed("shrink")
@@ -42,6 +65,9 @@ func _process(delta: float) -> void:
 		velocity = lerp(velocity, vel, 15 * delta)
 	
 	move_and_slide()
+	
+func get_dir_sign():
+	return gun_manager.scale.x
 
 func get_health_component() -> Health:
 	return get_node_or_null("Health")

@@ -17,7 +17,7 @@ func spawn_bullet(bullet: BulletBehavior):
 	if current_scene is Game:
 		current_scene.spawn_bullet(bullet)
 		
-func get_player() -> CharacterBody2D:
+func get_player() -> Player:
 	if current_scene is Game:
 		return current_scene.get_node_or_null("Player")
 	else:
