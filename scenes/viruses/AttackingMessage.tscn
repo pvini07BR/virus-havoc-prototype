@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://mwo3pachmgu3"]
+
+[ext_resource type="Script" uid="uid://yfikcq5l1c5r" path="res://scenes/viruses/attacking_message.gd" id="1_1krnd"]
+[ext_resource type="Script" uid="uid://rjqg6hvr6pib" path="res://scenes/components/hit_sender.gd" id="1_eqi4h"]
+[ext_resource type="Script" uid="uid://bvhufuu6pxphs" path="res://scenes/components/health.gd" id="2_p4shj"]
+[ext_resource type="Script" uid="uid://h6n53b0g7l2w" path="res://scenes/components/hit_receiver.gd" id="4_tbrtj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjtkb"]
+content_margin_left = 40.0
+content_margin_top = 10.0
+content_margin_right = 40.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+anti_aliasing = false
+anti_aliasing_size = 0.01
+
+[sub_resource type="LabelSettings" id="LabelSettings_kjtkb"]
+font_size = 41
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqi4h"]
+radius = 38.5
+height = 147.0
+
+[node name="AttackingMessage" type="PanelContainer"]
+offset_right = 147.0
+offset_bottom = 77.0
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kjtkb")
+script = ExtResource("1_1krnd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "• • •"
+label_settings = SubResource("LabelSettings_kjtkb")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_p4shj")
+max_health = 5.0
+invincible = true
+metadata/_custom_type_script = "uid://bvhufuu6pxphs"
+
+[node name="HitSender" type="Area2D" parent="."]
+script = ExtResource("1_eqi4h")
+mode = 1
+metadata/_custom_type_script = "uid://rjqg6hvr6pib"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitSender"]
+position = Vector2(73.5, 38.5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_eqi4h")
+
+[node name="HitReceiver" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_tbrtj")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://h6n53b0g7l2w"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitReceiver"]
+position = Vector2(73.5, 38.5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_eqi4h")
+
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="on_death" from="Health" to="." method="_on_health_on_death"]

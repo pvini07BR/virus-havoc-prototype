@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmubduallqtun"]
+[gd_scene load_steps=3 format=3 uid="uid://bmubduallqtun"]
 
 [ext_resource type="Script" uid="uid://cccfgtqn417je" path="res://scenes/stages/test_stage.gd" id="1_xr8nk"]
+[ext_resource type="PackedScene" uid="uid://dnsa7qfhc8t2p" path="res://scenes/viruses/AttackingMessagesParent.tscn" id="2_iu71g"]
 
 [node name="TestStage" type="Node2D"]
 script = ExtResource("1_xr8nk")
@@ -14,5 +15,8 @@ autostart = true
 wait_time = 5.0
 autostart = true
 
-[connection signal="timeout" from="FolderSpawnTimer" to="." method="_on_folder_spawn_timer_timeout"]
-[connection signal="timeout" from="PlaneBomberSpawnTimer" to="." method="_on_plane_bomber_spawn_timer_timeout"]
+[node name="AttackingMessagesParent" parent="." instance=ExtResource("2_iu71g")]
+anchors_preset = 12
+offset_top = 720.0
+offset_right = 1280.0
+offset_bottom = 720.0
