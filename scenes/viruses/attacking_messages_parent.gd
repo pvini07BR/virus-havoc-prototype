@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+class_name AttackingMessageParent
+
 const ATTACKING_MESSAGE = preload("uid://mwo3pachmgu3")
 
 const message_texts = [
@@ -23,6 +25,8 @@ var cycle_idx := 0
 var inv_cycle_idx := (message_texts.size() - 1) - cycle_idx
 
 @onready var timer: Timer = $Timer
+
+signal attacking_messages_parent_destroy
 
 func _on_timer_timeout() -> void:
 	var inst = ATTACKING_MESSAGE.instantiate() as AttackingMessage
@@ -66,4 +70,5 @@ func _on_message_destroy():
 	if timer_value > 0.2:
 		timer_value -= 0.1
 	else:
+		attacking_messages_parent_destroy.emit()
 		self.queue_free()

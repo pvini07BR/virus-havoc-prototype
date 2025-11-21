@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://mpxn7i30oqn3"]
+[gd_scene load_steps=9 format=3 uid="uid://mpxn7i30oqn3"]
 
 [ext_resource type="Script" uid="uid://dvdt7cbabvjnj" path="res://scenes/game.gd" id="1_qbsmt"]
 [ext_resource type="PackedScene" uid="uid://cspsefqtht4q2" path="res://scenes/Player.tscn" id="3_78awf"]
 [ext_resource type="Script" uid="uid://cfc6qaeqg0kfe" path="res://scenes/game_ui.gd" id="3_cpr0p"]
+[ext_resource type="Script" uid="uid://bssvgnp83deml" path="res://scenes/pause_menu.gd" id="4_78awf"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qbsmt"]
 normal = Vector2(0, 1)
@@ -73,4 +74,46 @@ size_flags_horizontal = 3
 [node name="Equipped" type="Label" parent="UI/VBoxContainer"]
 layout_mode = 2
 
+[node name="PauseMenu" type="ColorRect" parent="UI"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+script = ExtResource("4_78awf")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="UI/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="UI/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="UI/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit to menu"
+
 [connection signal="on_gun_changed" from="Player" to="UI" method="_on_player_on_gun_changed"]
+[connection signal="pressed" from="UI/PauseMenu/CenterContainer/VBoxContainer/ResumeButton" to="UI/PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/CenterContainer/VBoxContainer/RestartButton" to="UI/PauseMenu" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/CenterContainer/VBoxContainer/QuitButton" to="UI/PauseMenu" method="_on_quit_button_pressed"]

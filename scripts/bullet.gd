@@ -36,6 +36,9 @@ func _process(delta: float) -> void:
 	despawn_itself()
 
 func despawn_itself() -> void:
-	var rect = Rect2i(0, 0, GameManager.current_scene.stage_scene.bounds.x, GameManager.current_scene.stage_scene.bounds.y)
-	if !rect.has_point(self.position):
+	if GameManager.current_scene is Game:
+		var rect = Rect2i(0, 0, GameManager.current_scene.stage_scene.bounds.x, GameManager.current_scene.stage_scene.bounds.y)
+		if !rect.has_point(self.position):
+			self.queue_free()
+	else:
 		self.queue_free()

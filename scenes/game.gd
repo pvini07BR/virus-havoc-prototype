@@ -12,6 +12,8 @@ var stage_index = 0
 @onready var right_bound: WorldBoundaryShape2D = $Bounds/Right.shape
 @onready var bottom_bound: WorldBoundaryShape2D = $Bounds/Bottom.shape
 
+@onready var pause_menu: ColorRect = $UI/PauseMenu
+
 func _ready():
 	stage_scene = StageManager.stages[stage_index].scene.instantiate()
 	
@@ -27,3 +29,7 @@ func _ready():
 
 func spawn_bullet(bullet: BulletBehavior):
 	$Bullets.call_deferred("add_child", bullet)
+	
+func clear_bullets():
+	for child in $Bullets.get_children():
+		child.queue_free()

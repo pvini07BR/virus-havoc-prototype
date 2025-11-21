@@ -7,9 +7,11 @@ script = ExtResource("1_xr8nk")
 metadata/_custom_type_script = "uid://ceorq28sq4wl5"
 
 [node name="FolderSpawnTimer" type="Timer" parent="."]
-wait_time = 0.25
-autostart = true
 
-[node name="PlaneBomberSpawnTimer" type="Timer" parent="."]
+[node name="PaperBomberTimer" type="Timer" parent="."]
 wait_time = 5.0
-autostart = true
+
+[node name="Enemies" type="Node" parent="."]
+
+[connection signal="timeout" from="FolderSpawnTimer" to="." method="_on_folder_spawn_timer_timeout"]
+[connection signal="timeout" from="PaperBomberTimer" to="." method="_on_paper_bomber_timer_timeout"]

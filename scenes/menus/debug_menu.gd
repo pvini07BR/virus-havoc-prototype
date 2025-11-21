@@ -1,6 +1,6 @@
 extends CenterContainer
 
-var game_scene = preload("res://scenes/Game.tscn")
+var game_scene = load("res://scenes/Game.tscn")
 
 @onready var gunlist: ItemList = $VBoxContainer/HBoxContainer/GunSelector/GunListVbox/GunList
 @onready var stagelist: ItemList = $VBoxContainer/HBoxContainer/StageSelector/StageList

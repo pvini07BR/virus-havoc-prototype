@@ -33,7 +33,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var input_axis = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	if !lock_facing:
+	if !lock_facing and !Input.is_action_pressed("lock_facing"):
 		if input_axis.x < 0:
 			direction = Direction.LEFT
 		elif input_axis.x > 0:
